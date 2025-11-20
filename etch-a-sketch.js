@@ -1,17 +1,23 @@
-const container = document.querySelector('#container');
+console.log("Etch-a-Sketch ready!");
 
+// Function that creates a grid of N x N squares
 function createGrid(size) {
-  // total squares = size * size
+  const container = document.querySelector('#container');
+
+  container.innerHTML = ""; 
+  // clear previous grid
+
+  // Set up the grid structure
+  container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+
+  // Create N*N squares
   for (let i = 0; i < size * size; i++) {
     const square = document.createElement('div');
-    square.classList.add('square'); 
-    // optional class
-    square.style.border = '1px solid #ddd'; 
-    // to see the squares
+    square.classList.add('grid-square'); 
     container.appendChild(square);
   }
-
-  container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
 }
 
+// Default grid (Odin uses 16x16)
 createGrid(16);
